@@ -74,7 +74,7 @@ release/
 # Local Configuration
 # ===================================
 local.properties
-gradle.properties
+!gradle.properties
 !gradle.properties.template
 
 # ===================================

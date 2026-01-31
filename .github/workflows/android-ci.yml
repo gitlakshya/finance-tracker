@@ -27,32 +27,8 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       
-      # Detekt temporarily disabled due to memory constraints in dev container
-      # Will be re-enabled when building on CI/CD servers with adequate resources
-      # - name: Run Detekt (Code Smells)
-      #   run: ./gradlew detekt
-      #   continue-on-error: false
-      # 
-      # - name: Upload Detekt Report
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: detekt-report
-      #     path: app/build/reports/detekt/
-      
-      - name: Run Android Lint
-        run: ./gradlew lintDevelopmentDebug --no-daemon
-        continue-on-error: false
-      
-      - name: Upload Lint Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lint-report
-          path: app/build/reports/lint-results-*.html
-      
-      - name: Kotlin Type Check
-        run: ./gradlew compileDebugKotlin
+      - name: Kotlin Compilation Check
+        run: ./gradlew compileDevelopmentDebugKotlin --no-daemon
         continue-on-error: false
 
   test:

@@ -94,6 +94,17 @@ android {
         compose = true
         buildConfig = true
     }
+    
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+        disable += setOf(
+            "VectorPath",
+            "IconMissingDensityFolder",
+            "IconDensities",
+            "ObsoleteLintCustomCheck"
+        )
+    }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"
     }

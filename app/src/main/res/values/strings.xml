@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="home">Home</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="reports">Reports</string>
+    <string name="settings">Settings</string>
+    
+    <!-- Home Screen -->
+    <string name="total_expenses">Total Expenses</string>
+    <string name="transactions">transactions</string>
+    <string name="category_breakdown">Category Breakdown</string>
+    <string name="recent_expenses">Recent Expenses</string>
+    <string name="no_expenses_found">No expenses found</string>
+    
+    <!-- Add Expense Screen -->
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="description">Description / Merchant</string>
+    <string name="payment_mode">Payment Mode</string>
+    <string name="notes">Notes</string>
+    <string name="save_expense">Save Expense</string>
+    <string name="delete">Delete</string>
+    
+    <!-- Reports Screen -->
+    <string name="monthly_reports">Monthly Reports</string>
+    <string name="export_pdf">Export PDF</string>
+    <string name="export_csv">Export CSV</string>
+    
+    <!-- Settings Screen -->
+    <string name="sms_tracking">Automatic SMS Tracking</string>
+    <string name="sms_tracking_desc">Auto-detect expenses from bank SMS</string>
+    <string name="cloud_backup">Cloud Backup</string>
+    <string name="cloud_backup_desc">Backup to Google Drive</string>
+    <string name="notifications">Notifications</string>
+    <string name="notifications_desc">Notify when expenses are added</string>
+    <string name="manage_categories">Manage Categories</string>
+    <string name="delete_all_data">Delete All Data</string>
+    <string name="about">About</string>
+    <string name="version">Version</string>
+</resources>

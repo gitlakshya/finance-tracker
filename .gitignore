@@ -1,0 +1,420 @@
+# ===================================
+# Android Studio / IntelliJ IDEA
+# ===================================
+*.iml
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/contentModel.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/gradle.xml
+.idea/libraries
+.idea/caches
+.idea/modules.xml
+.idea/compiler.xml
+.idea/misc.xml
+.idea/.name
+.idea/assetWizardSettings.xml
+.idea/deploymentTargetDropDown.xml
+.idea/inspectionProfiles/
+.idea/navEditor.xml
+.idea/render.experimental.xml
+
+# Android Studio captures folder
+captures/
+
+# ===================================
+# Gradle
+# ===================================
+.gradle/
+.gradle
+/build/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+.gradletasknamecache
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# ===================================
+# Android Build Outputs
+# ===================================
+/app/build/
+*/build/
+**/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+release/
+
+# ===================================
+# Local Configuration
+# ===================================
+local.properties
+gradle.properties
+!gradle.properties.template
+
+# ===================================
+# Keystore & Signing
+# ===================================
+*.jks
+*.keystore
+release-keystore.jks
+debug-keystore.jks
+keystore.properties
+signing.properties
+key.properties
+
+# ===================================
+# Secrets & Credentials
+# ===================================
+# Google Services
+google-services.json
+GoogleService-Info.plist
+
+# Play Store Service Account
+play-store-credentials.json
+service-account*.json
+playstore-api-key.json
+
+# Environment specific configs
+.env
+.env.*
+.env.local
+.env.production
+.env.staging
+.env.development
+
+# Secrets directory
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# API Keys
+api-keys.properties
+apikey.properties
+config/secrets.properties
+
+# Firebase
+firebase.json
+.firebaserc
+
+# AWS
+.aws/
+aws-exports.js
+
+# ===================================
+# Android Native
+# ===================================
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+.cxx/
+
+# NDK
+obj/
+.ndk/
+
+# ===================================
+# Lint & Testing
+# ===================================
+lint/
+lint-report.html
+lint-results.xml
+lint-baseline.xml
+/app/lint/
+
+# Test reports
+/app/test-results/
+/app/jacoco/
+coverage/
+*.exec
+
+# ===================================
+# Backup & Temporary Files
+# ===================================
+*.bak
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+*~.nib
+*.orig
+
+# ===================================
+# Operating System Files
+# ===================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+.nfs*
+
+# ===================================
+# Logs
+# ===================================
+*.log
+logs/
+log/
+/app/logs/
+logcat.txt
+
+# ===================================
+# Kotlin
+# ===================================
+kotlin-js-store/
+.kotlin/
+
+# ===================================
+# Compose
+# ===================================
+.compose/
+
+# ===================================
+# Version Control
+# ===================================
+.svn/
+.hg/
+.bzr/
+*.rej
+*.orig
+*.patch
+
+# ===================================
+# Profiling & Debug
+# ===================================
+*.hprof
+*.trace
+*.jfr
+memory-snapshots/
+profiler/
+
+# Profiler output
+*.iprof
+output.json
+
+# ===================================
+# Documentation Build
+# ===================================
+docs/_build/
+site/
+
+# ===================================
+# Database
+# ===================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+!/app/schemas/
+
+# ===================================
+# Generated Resources
+# ===================================
+# Avoid checking in generated resource files
+/app/src/main/res/values/google_maps_api.xml
+
+# ===================================
+# CI/CD
+# ===================================
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# CircleCI
+.circleci/local
+
+# Travis
+.travis.yml.bak
+
+# ===================================
+# Package Manager
+# ===================================
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log
+yarn-error.log
+
+# ===================================
+# Third-party Libraries (if vendored)
+# ===================================
+/libs/*.aar
+/libs/*.jar
+
+# ===================================
+# Backup & Archive
+# ===================================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Backup files created during keystore generation
+KEYSTORE_BACKUP_INSTRUCTIONS.txt
+CI_CD_SETUP.txt
+
+# ===================================
+# Miscellaneous
+# ===================================
+# User-specific configurations
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Fleet editor
+.fleet/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Eclipse
+.metadata
+.classpath
+.project
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+# CTags
+tags
+TAGS
+
+# Rope project settings
+.ropeproject
+
+# ===================================
+# Project-Specific
+# ===================================
+# Generated release files
+/release-notes/
+/release-builds/
+
+# Screenshots & Demo files
+screenshots/
+demo-files/
+
+# Documentation drafts
+/docs/drafts/
+
+# Analytics & Tracking configs (if sensitive)
+analytics-config.json
+
+# Crashlytics
+crashlytics-build.properties
+fabric.properties
+com_crashlytics_export_strings.xml
+
+# ProGuard mapping files (keep for production releases)
+# Consider backing these up separately
+# mapping.txt
+# seeds.txt
+# usage.txt
+
+# ===================================
+# Keep These Files (Important!)
+# ===================================
+# Keep Gradle wrapper
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# Keep ProGuard rules
+!proguard-rules.pro
+!app/proguard-rules.pro
+
+# Keep Room schemas for migration
+!app/schemas/**/*.json
+
+# Keep test resources
+!**/src/test/resources/
+!**/src/androidTest/resources/
+

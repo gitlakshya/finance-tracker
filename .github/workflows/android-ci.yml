@@ -3,8 +3,6 @@ name: Android CI
 on:
   pull_request:
     branches: [ main, develop ]
-  push:
-    branches: [ main, develop ]
 
 jobs:
   code-quality:
@@ -41,7 +39,7 @@ jobs:
       #     path: app/build/reports/detekt/
       
       - name: Run Android Lint
-        run: ./gradlew lintDevelopmentDebug
+        run: ./gradlew lintDevelopmentDebug --no-daemon
         continue-on-error: false
       
       - name: Upload Lint Report
@@ -75,7 +73,7 @@ jobs:
         run: chmod +x gradlew
       
       - name: Run Unit Tests
-        run: ./gradlew testDevelopmentDebugUnitTest --continue
+        run: ./gradlew testDevelopmentDebugUnitTest --no-daemon
         continue-on-error: false
       
       - name: Publish Test Results
@@ -111,7 +109,7 @@ jobs:
         run: chmod +x gradlew
       
       - name: Build Debug APK
-        run: ./gradlew assembleDevelopmentDebug
+        run: ./gradlew assembleDevelopmentDebug --no-daemon
       
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4

@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.expense.tracker.data.database.ExpenseDatabase
 import com.expense.tracker.repository.ExpenseRepository
+import com.expense.tracker.utils.SMSTransactionParser
 import com.expense.tracker.ui.theme.ExpenseTrackerTheme
 import com.expense.tracker.ui.navigation.AppNavigation
 import kotlinx.coroutines.launch
@@ -46,7 +47,10 @@ class MainActivity : ComponentActivity() {
         
         // Request permissions
         requestPermissions()
-        
+
+        // Initialize the MobileBERT on-device NLP model
+        SMSTransactionParser.initializeML(applicationContext)
+
         setContent {
             ExpenseTrackerTheme {
                 Surface(

@@ -1,6 +1,7 @@
 package com.expense.tracker.utils
 
-import java.util.regex.Pattern
+import android.content.Context
+import org.tensorflow.lite.task.text.nlclassifier.BertNLClassifier
 
 data class ParsedTransaction(
     val amount: Double,
@@ -11,28 +12,46 @@ data class ParsedTransaction(
 )
 
 object SMSTransactionParser {
+    // We keep the amount pattern to extract the exact numbers
     private val AMOUNT_PATTERN = Regex("""(?:Rs\.?|₹|INR|Amount)\s*(?:of\s+)?[:\s]*([0-9,]+(?:\.[0-9]{2})?)""")
-    private val DEBIT_PATTERN = Regex("""(?:debited|withdrawn|transferred|spent|paid|charged)\s*(?:of|by|to)?\s*[:\s]*(?:Rs\.?|₹)?""", RegexOption.IGNORE_CASE)
-    private val CREDIT_PATTERN = Regex("""(?:credited|received|deposited|added)\s*""", RegexOption.IGNORE_CASE)
+
+    private var bertClassifier: BertNLClassifier? = null
+
+    // Initialize the Transformer model (Call this from MainActivity or Application class)
+    fun initializeML(context: Context) {
+        if (bertClassifier == null) {
+            val options = BertNLClassifier.BertNLClassifierOptions.builder().build()
+            bertClassifier = BertNLClassifier.createFromFileAndOptions(
+                context,
+                "model.tflite",
+                options
+            )
+        }
+    }
 
     fun parseTransaction(smsBody: String, sender: String): ParsedTransaction? {
-        // Check if it's a debit transaction (skip if credit)
-        if (CREDIT_PATTERN.containsMatchIn(smsBody)) {
+        val classifier = bertClassifier ?: return null // Ensure model is loaded
+
+        // 1. Transformer Intent Classification
+        // The model returns a list of categories (e.g., "0" for Not Debit, "1" for Debit) with confidence scores
+        val results = classifier.classify(smsBody)
+
+        // Find the "1" (Is_Debit) category score
+        val isDebitScore = results.find { it.label == "1" }?.score ?: 0f
+
+        // If the Transformer is less than 70% confident it's a debit, ignore it
+        if (isDebitScore < 0.70f) {
             return null
         }
 
-        if (!DEBIT_PATTERN.containsMatchIn(smsBody) && !AMOUNT_PATTERN.containsMatchIn(smsBody)) {
-            return null
-        }
-
-        // Extract amount
+        // 2. Extract Amount using existing Regex
         val amountMatch = AMOUNT_PATTERN.find(smsBody)
         val amountStr = amountMatch?.groupValues?.get(1)?.replace(",", "") ?: return null
         val amount = amountStr.toDoubleOrNull() ?: return null
 
         if (amount <= 0) return null
 
-        // Extract merchant/description
+        // 3. Extract Meta-data using your existing logic
         val merchant = extractMerchant(smsBody)
         val paymentMode = extractPaymentMode(smsBody)
         val category = categorizeExpense(merchant, smsBody)
@@ -47,7 +66,6 @@ object SMSTransactionParser {
     }
 
     private fun extractMerchant(smsBody: String): String {
-        // Look for common patterns
         val patterns = listOf(
             Regex("""at\s+([A-Za-z0-9\s]+?)(?:\.|,|on\s|${'$'}|\s-\s)"""),
             Regex("""to\s+([A-Za-z0-9\s]+?)(?:\.|,|on\s|${'$'}|\s-\s)"""),
@@ -62,7 +80,6 @@ object SMSTransactionParser {
             }
         }
 
-        // Fallback: extract first capitalized word or phrase
         val words = smsBody.split(Regex("\\s+"))
         for (i in words.indices) {
             if (words[i].first().isUpperCase() && words[i].length > 2) {
@@ -89,7 +106,6 @@ object SMSTransactionParser {
         val merchantLower = merchant.lowercase()
         val smsBodYLower = smsBody.lowercase()
 
-        // Category mapping based on keywords
         val categoryKeywords = Constants.CategoryKeywords.getCategoryKeywordsMap().toMutableMap()
         categoryKeywords["Others"] = emptyList()
 

@@ -107,6 +107,8 @@ playstore-api-key.json
 .env.production
 .env.staging
 .env.development
+ml_env
+ml_env/*
 
 # Secrets directory
 secrets/

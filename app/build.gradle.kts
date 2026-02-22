@@ -144,7 +144,10 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    
+
+    // TensorFlow Lite for On-Device Transformer NLP
+    implementation("org.tensorflow:tensorflow-lite-task-text:0.4.4")
+
     // Hilt Dependency Injection
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
